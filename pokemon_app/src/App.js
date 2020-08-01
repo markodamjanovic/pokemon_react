@@ -1,12 +1,11 @@
 import React from 'react';
+import {PokemonList} from './features/pokemonList/PokemonList';
 import './App.css';
 
-function App() {
+export function App() {  
   return (
     <div className="App">
-      <header className="App-header">
-        <h1> Hello World! </h1>
-      </header>
+        <PokemonList/>
     </div>
   );
 }
