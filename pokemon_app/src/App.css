@@ -21,9 +21,5 @@
   margin: auto;
   justify-content: center;
   align-items: center;
-  background-color:  #ccd9ff;
-  opacity: 0.9;
-  border-radius: 20px;
-  box-shadow: 0 0 5px 2px #5c5b5b;
-  width: 40%;
+  width: 30%;
 }

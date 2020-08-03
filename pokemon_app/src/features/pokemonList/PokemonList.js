@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector, useDispatch, ReactReduxContext} from 'react-redux';
 import {allPokemons, fetchPokemons} from './pokemonListSlice'
 import { increment, decrement, selectPageNum} from '../../appSlice';
 import {API_URL, SUCCESS, LOADING, FAILED} from '../../utility/API';
@@ -20,28 +20,35 @@ export function PokemonList() {
       }
     }, [pokemonDataStatus, dispatch])
     
-    let content
-    switch (pokemonDataStatus) {
-      case LOADING:
-        content = <LoadingSpinner/>
-        break;
-      case SUCCESS:
-        content = pokemonData.map(pokemon =>(<div key={pokemon.name}> {pokemon.name} </div>) )
-        break;
-      case FAILED:
-        content = <div>{error}</div>
-        break;
-      default:
-        break;
+
+    function renderElements(){
+      switch (pokemonDataStatus) {
+        case LOADING:
+          return <LoadingSpinner/>
+        case SUCCESS:
+          return renderPokemonElement()
+        case FAILED:
+          return <div>{error}</div>
+        default:
+          break;
+        }
     }
 
-    return (
-      <div className="body">
-        <h1>Hello Pokemons!</h1>
-        {content}
-        <button className="button" disabled={pageNumber <= 1 } onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber - 1})); dispatch(decrement())} } > Previous </button>
-        <span className="number">{pageNumber}</span>
-        <button className="button" disabled={pokemonData.length === 0} onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber + 1})); dispatch(increment())}} > Next </button>
+    function renderPokemonElement(){
+    return pokemonData.map(pokemon => (<button class="poke-button">{pokemon.name}</button>))
+    } 
+    
+     return (
+      <div>
+        <div class="flex-container">
+          {renderElements()}
+        </div>
+        
+        <div>
+          <button className="button" disabled={pageNumber <= 1 } onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber - 1})); dispatch(decrement())} } > Previous </button>
+          <span className="number">{pageNumber}</span>
+          <button className="button" disabled={pokemonData.length === 0} onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber + 1})); dispatch(increment())}} > Next </button>
+        </div>
       </div>
     );
 }
