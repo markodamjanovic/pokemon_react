@@ -3,7 +3,7 @@
     background-color: crimson;
     text-align: center;
     color: white;
-    width: 10%;
+    width: 15%;
     padding: 10px 10px;
     display: inline-block;
     border-radius: 8px;
@@ -21,8 +21,4 @@
 
 .number{
     padding: 2%;
-}
-
-.body{
-    margin: auto;
 }
