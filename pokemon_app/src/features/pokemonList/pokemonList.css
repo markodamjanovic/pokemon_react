@@ -7,7 +7,7 @@
     padding: 10px 10px;
     display: inline-block;
     border-radius: 8px;
-    border: 2px solid gray
+    border: 2px solid black
 }
 
 .button:hover { 
@@ -16,16 +16,13 @@
 }
 
 .button:disabled{
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .number{
     padding: 2%;
 }
 
-.image-holder{
-    width: 15%;
-}
 
 .flex-container{
     display: flex;
@@ -41,21 +38,33 @@
 }
 
 .poke-button{
+    background:url(great-ball.png);
+    background-size: cover;
     align-content: space-around;
-    background-color: #FFCB05;
-    border-color: black;
-    width: 90px;
-    height: 70px;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
-    font-weight: bold;
-    border-radius: 50%;
-    box-shadow: 0 5px #999;
+    border: none;
     outline: none;
+    margin-bottom: 20px;
+}
+
+.h1{
+    margin: auto;
+    width: fit-content;
+    align-content: center;
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+    background-color: #ccd9fff1;
+    opacity: 95%;
+    border-radius: 10%;
 }
 
 .poke-button:active {
     opacity: 80%;
-    box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
 

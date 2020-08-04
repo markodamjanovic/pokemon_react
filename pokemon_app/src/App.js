@@ -5,7 +5,7 @@ import './App.css';
 export function App() {  
   return (
     <div className="App">
-      <div> <img src="/pokemon_logo.png" width="20%"/> </div>
+      <div> <img src="/pokemon_logo.png" width="20%" alt=""/> </div>
       <div className="App-body">
         <PokemonList/>
       </div>

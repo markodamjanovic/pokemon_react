@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {useSelector, useDispatch, ReactReduxContext} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {allPokemons, fetchPokemons} from './pokemonListSlice'
 import { increment, decrement, selectPageNum} from '../../appSlice';
 import {API_URL, SUCCESS, LOADING, FAILED} from '../../utility/API';
@@ -35,7 +35,8 @@ export function PokemonList() {
     }
 
     function renderPokemonElement(){
-    return pokemonData.map(pokemon => (<button class="poke-button">{pokemon.name}</button>))
+    return pokemonData.map(pokemon => (
+          <button class="poke-button"><h1 class="h1">{pokemon.name}</h1></button>))
     } 
     
      return (
