@@ -8,14 +8,26 @@ export const fetchPokemons = createAsyncThunk('pokemonList/fetchPokemons', async
 
 const initialState = {
     pokemons: [],
+    selectedPokemon: null,
     status: 'idle',
     error: null,
+    showDetails: false
   }
+
 
 export const pokemonListSlice = createSlice({
     name: 'pokemonList',
     initialState,
     reducers:{
+      showSelectedPokemon: (state, action) =>{
+        state.selectedPokemon = action.payload;
+        state.showDetails = true;
+      },
+      hideSelectedPokemon : state => {
+        state.selectedPokemon = null;
+        state.showDetails = false;
+        state.status = 'idle';
+      }
     },
     extraReducers: {
         [fetchPokemons.pending]: (state, action) => {
@@ -32,7 +44,13 @@ export const pokemonListSlice = createSlice({
     }
 })
 
+export const { showSelectedPokemon, hideSelectedPokemon} = pokemonListSlice.actions;
+
 export const allPokemons = state => state.pokemonList.pokemons
+
+export const showDetails = state => state.pokemonList.showDetails
+
+export const selectedPokemon = state => state.pokemonList.selectedPokemon
 
 export default pokemonListSlice.reducer;
 

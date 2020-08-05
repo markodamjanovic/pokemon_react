@@ -1,8 +1,8 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import { getPokemonByName, SUCCESS, LOADING, FAILED} from '../../utility/API';
 
-export const fetchPokemonByName = createAsyncThunk('pokemonList/fetchPokemonByName', async (name) => {
-    const response = await getPokemonByName(name)
+export const fetchPokemonByName = createAsyncThunk('pokemonList/fetchPokemonByName', async (url) => {
+    const response = await getPokemonByName(url)
     return response
 })
 
@@ -16,6 +16,9 @@ export const pokemonDetailSlice = createSlice({
     name: 'pokemon',
     initialState,
     reducers:{
+      setToInitalState: state => {
+        state.status = 'idle';
+      }
     },
     extraReducers: {
         [fetchPokemonByName.pending]: (state, action) => {
@@ -23,7 +26,7 @@ export const pokemonDetailSlice = createSlice({
         },
         [fetchPokemonByName.fulfilled]: (state, action) => {
           state.status = SUCCESS
-          state.data = action.payload.results
+          state.data = action.payload
         },
         [fetchPokemonByName.rejected]: (state, action) => {
           state.status = FAILED
@@ -31,6 +34,9 @@ export const pokemonDetailSlice = createSlice({
         },
     }
 })
+
+
+export const {setToInitalState} = pokemonDetailSlice.actions;
 
 export const pokemonInfo = state => state.pokemon.data
 
