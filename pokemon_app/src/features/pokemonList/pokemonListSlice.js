@@ -1,8 +1,13 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {getPokemons, SUCCESS, LOADING, FAILED} from '../../utility/API';
+import {getPokemons, getPokemonApiData, SUCCESS, LOADING, FAILED} from '../../utility/API';
 
 export const fetchPokemons = createAsyncThunk('pokemonList/fetchPokemons', async (params) => {
     const response = await getPokemons(params.url, params.page, params.numberOfRecords)
+    return response
+  })
+
+  export const fetchPokemonsByType = createAsyncThunk('pokemonList/fethcPokemonsByType', async (url) => {
+    const response = await getPokemonApiData(url)
     return response
   })
 
@@ -38,6 +43,17 @@ export const pokemonListSlice = createSlice({
           state.pokemons = action.payload.results
         },
         [fetchPokemons.rejected]: (state, action) => {
+          state.status = FAILED
+          state.error = action.payload
+        },
+        [fetchPokemonsByType.pending]: (state, action) => {
+          state.status = LOADING
+        },
+        [fetchPokemonsByType.fulfilled]: (state, action) => {
+          state.status = SUCCESS
+          state.pokemons = action.payload.pokemon.map(pokemon => pokemon.pokemon)
+        },
+        [fetchPokemonsByType.rejected]: (state, action) => {
           state.status = FAILED
           state.error = action.payload
         },

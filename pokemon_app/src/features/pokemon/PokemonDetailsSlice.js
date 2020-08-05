@@ -1,8 +1,8 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import { getPokemonByName, SUCCESS, LOADING, FAILED} from '../../utility/API';
+import { getPokemonApiData, SUCCESS, LOADING, FAILED} from '../../utility/API';
 
 export const fetchPokemonByName = createAsyncThunk('pokemonList/fetchPokemonByName', async (url) => {
-    const response = await getPokemonByName(url)
+    const response = await getPokemonApiData(url)
     return response
 })
 

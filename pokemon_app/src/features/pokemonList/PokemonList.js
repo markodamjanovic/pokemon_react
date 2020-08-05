@@ -6,7 +6,8 @@ import {API_URL, SUCCESS, LOADING, FAILED} from '../../utility/API';
 import {LoadingSpinner} from '../../utility/loadingSpinner/loadingSpinner'
 import {PokemonDetails} from '../pokemon/PokemonDetails'
 import {FilterPokemons} from '../filterPokemons/FilterPokemons'
-import {filterName} from '../filterPokemons/FilterPokemonsSlice'
+import {filterName, filterType} from '../filterPokemons/FilterPokemonsSlice'
+
 
 import './pokemonList.css'
 
@@ -18,6 +19,7 @@ export function PokemonList() {
     const pokemonDataStatus = useSelector(state => state.pokemonList.status)
     const showSinglePokemon = useSelector(showDetails)
     const singleSelectedPokemon = useSelector(selectedPokemon)
+    const selectedType = useSelector(filterType)
     const error = useSelector(state => state.pokemonList.error)
     const pokemonFilterName = useSelector(filterName)
 
@@ -51,7 +53,7 @@ export function PokemonList() {
         pokemonList = pokemonData;
       }
 
-    return pokemonList.map(pokemon => (
+      return pokemonList.map(pokemon => (
           <button key={pokemon.name} className="poke-button" onClick={() => getSinglePokemon(pokemon) }>
               <h1 className="h1">{pokemon.name}</h1>
           </button>))
@@ -68,7 +70,7 @@ export function PokemonList() {
         
         {showSinglePokemon &&  <PokemonDetails pokemon={singleSelectedPokemon}/>}
   
-        {(showSinglePokemon ^ pokemonFilterName === "") === 1 && <div>
+        {(showSinglePokemon ^ pokemonFilterName === "" ^ selectedType !== "All Types") === 1 && <div>
           <button className="button" disabled={pageNumber <= 1 } onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber - 1})); dispatch(decrement())} } > Previous </button>
           <button className="button" disabled={pokemonData.length === 0} onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber + 1})); dispatch(increment())}} > Next </button>
         </div>}
