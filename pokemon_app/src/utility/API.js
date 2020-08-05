@@ -1,5 +1,6 @@
 
 export const API_URL = 'https://pokeapi.co/api/v2/pokemon'
+export const API_URL_TYPE = 'https://pokeapi.co/api/v2/type'
 export const SUCCESS = 'success'
 export const LOADING = 'loading'
 export const FAILED = 'failed'
@@ -29,6 +30,6 @@ export async function getPokemons(url, pageNumber=1, numberOfRecords=40){
   return callAPI(url);
 }
 
-export async function getPokemonByName(url){
+export async function getPokemonApiData(url){
   return callAPI(url);
 }
