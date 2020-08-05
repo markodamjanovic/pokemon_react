@@ -1,44 +1,27 @@
-
-.button {
-    background-color: #ee1515;
-    text-align: center;
-    color: white;
-    width: 20%;
-    padding: 10px 10px;
-    display: inline-block;
-    border-radius: 8px;
-    border: 2px solid black
-}
-
-.button:hover { 
-    background-color: #222224;
-    color: white;
-}
-
-.button:disabled{
-    opacity: 0.8;
-}
-
 .number{
     padding: 2%;
 }
-
 
 .flex-container{
     display: flex;
     overflow: auto;
     flex-flow: row wrap;
     list-style: none;
+    height: 400px;
     justify-content: space-between;
     background-color:  #ccd9ff;
     opacity: 0.9;
     border-radius: 20px;
     box-shadow: 0 0 5px 2px #5c5b5b;
     padding: 10px;
+}::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 
+
 .poke-button{
-    background:url(great-ball.png);
+    background:url(../../img/great-ball.png);
     background-size: cover;
     align-content: space-around;
     margin: 0;
@@ -51,20 +34,7 @@
     margin-bottom: 20px;
 }
 
-.h1{
-    margin: auto;
-    width: fit-content;
-    align-content: center;
-    color: black;
-    font-weight: bold;
-    font-size: medium;
-    background-color: #ccd9fff1;
-    opacity: 95%;
-    border-radius: 10%;
-}
-
 .poke-button:active {
     opacity: 80%;
     transform: translateY(4px);
   }
-
