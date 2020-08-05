@@ -1,11 +1,10 @@
 import React from 'react'
-import './loadingSpinner.css'
-import pokeBall from './poke_ball.png' //'..//poke_ball.png'
+import pokeBall from '../../img/poke_ball.png'
 
 export function LoadingSpinner() {
     return (
-        <span>
-            <img class="loader" src={pokeBall} alt="" />
-        </span>
+        <div className="container">
+           <h1>Loading...</h1> <img className="loader" src={pokeBall} alt="" />
+        </div>
     );
 }
