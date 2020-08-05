@@ -5,6 +5,9 @@ import { increment, decrement, selectPageNum} from '../../appSlice';
 import {API_URL, SUCCESS, LOADING, FAILED} from '../../utility/API';
 import {LoadingSpinner} from '../../utility/loadingSpinner/loadingSpinner'
 import {PokemonDetails} from '../pokemon/PokemonDetails'
+import {FilterPokemons} from '../filterPokemons/FilterPokemons'
+import {filterName} from '../filterPokemons/FilterPokemonsSlice'
+
 import './pokemonList.css'
 
 export function PokemonList() {
@@ -16,12 +19,13 @@ export function PokemonList() {
     const showSinglePokemon = useSelector(showDetails)
     const singleSelectedPokemon = useSelector(selectedPokemon)
     const error = useSelector(state => state.pokemonList.error)
+    const pokemonFilterName = useSelector(filterName)
 
     useEffect(() => {
       if (pokemonDataStatus === 'idle'){
-        dispatch(fetchPokemons({url: API_URL, pageNumber:pageNumber}))
+        dispatch(fetchPokemons({url: API_URL, pageNumber:1}))
       }
-    }, [pokemonDataStatus, pageNumber, dispatch])
+    }, [pokemonDataStatus, dispatch])
     
 
     function renderElements(){
@@ -38,7 +42,16 @@ export function PokemonList() {
     }
 
     function renderPokemonElement(){
-    return pokemonData.map(pokemon => (
+      let pokemonList;
+
+      if (pokemonFilterName !== ""){
+        pokemonList = pokemonData.filter(pokemon => pokemon.name.includes(pokemonFilterName))
+      }
+      else{
+        pokemonList = pokemonData;
+      }
+
+    return pokemonList.map(pokemon => (
           <button key={pokemon.name} className="poke-button" onClick={() => getSinglePokemon(pokemon) }>
               <h1 className="h1">{pokemon.name}</h1>
           </button>))
@@ -50,13 +63,13 @@ export function PokemonList() {
     
      return (
       <div>
+        <div> <FilterPokemons/> </div>
         {!showSinglePokemon && renderElements()}
         
         {showSinglePokemon &&  <PokemonDetails pokemon={singleSelectedPokemon}/>}
   
-        {!showSinglePokemon && <div>
+        {(showSinglePokemon ^ pokemonFilterName === "") === 1 && <div>
           <button className="button" disabled={pageNumber <= 1 } onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber - 1})); dispatch(decrement())} } > Previous </button>
-          <span className="number">{pageNumber}</span>
           <button className="button" disabled={pokemonData.length === 0} onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber + 1})); dispatch(increment())}} > Next </button>
         </div>}
       </div>
