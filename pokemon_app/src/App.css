@@ -33,7 +33,8 @@
   padding: 10px 10px;
   display: inline-block;
   border-radius: 8px;
-  border: 2px solid black
+  border: 2px solid black;
+  margin: 5px;
 }
 
 .button:hover { 
@@ -121,5 +122,37 @@
 }
 
 .placeholder{
+  width: 45%;
+}
+
+.text-input{
+  border: 2px solid black;
   width: 100px;
+  height: 18px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.searchbutton{
+  width: 80px;
+  height: 25px;
+  font-size: 13px;
+  background-color: #ee1515;
+  text-align: center;
+  border: 2px solid black;
+  color: white;
+  margin: 5px;
+  border-radius: 10px;
+
+}
+
+.catchallbutton{
+  width: 120px;
+  height: 25px;
+  font-size: 13px;
+  background-color: #3b4cca;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: white;
 }
