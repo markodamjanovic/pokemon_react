@@ -175,7 +175,7 @@
 }
 
 .placeholder{
-  width: 65%;
+  width: 45%;
 }
 
 @media only screen and (max-width: 720px) {
@@ -202,7 +202,6 @@
   color: white;
   margin: 5px;
   border-radius: 10px;
-
 }
 
 .catchallbutton{
@@ -214,4 +213,10 @@
   border: 2px solid black;
   border-radius: 10px;
   color: white;
+}
+
+.dropdown{
+  border: 2px solid black;
+  margin: 2px;
+  border-radius: 10px;
 }
