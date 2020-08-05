@@ -1,6 +1,5 @@
 
 export const API_URL = 'https://pokeapi.co/api/v2/pokemon'
-export const API_URL_TEST = 'https://pokeapi.co/api/v2/pokemon/butterfree'
 export const SUCCESS = 'success'
 export const LOADING = 'loading'
 export const FAILED = 'failed'
@@ -29,7 +28,6 @@ export async function getPokemons(url, pageNumber=1, numberOfRecords=40){
   return callAPI(url);
 }
 
-export async function getPokemonByName(name='butterfree'){
-  let url = `${API_URL}/{name}`
+export async function getPokemonByName(url){
   return callAPI(url);
 }
