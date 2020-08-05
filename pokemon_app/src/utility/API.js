@@ -3,6 +3,7 @@ export const API_URL = 'https://pokeapi.co/api/v2/pokemon'
 export const SUCCESS = 'success'
 export const LOADING = 'loading'
 export const FAILED = 'failed'
+export const MAX_NUM_OF_RECORDS = 1000
 
 async function callAPI(url){
   let data
