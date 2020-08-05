@@ -49,11 +49,11 @@ export function PokemonDetails(prop) {
               <div><h2 className="h2">{pokemonDetails.name}</h2></div>  
               <div className="atributes">
                 <p className="p3">Abilities</p>
-                <div className="list">{pokemonDetails.abilities.map((a) => <li>{a.ability.name}</li>)}</div>
+                <div className="list">{pokemonDetails.abilities.map((a) => <li key={a.ability.name}>{a.ability.name}</li>)}</div>
               </div>
               <div className="atributes">
                 <p className="p3">Type</p>
-                <div className="list">{pokemonDetails.types.map((t) => <li>{t.type.name}</li>)}</div>
+                <div className="list">{pokemonDetails.types.map((t) => <li key={t.type.name}>{t.type.name}</li>)}</div>
               </div>
               <div className="atributes"><p className="p3">Weight:</p> {pokemonDetails.weight}</div>
             </div>
@@ -63,7 +63,7 @@ export function PokemonDetails(prop) {
       <div>
         {renderElements()}
         <div> 
-          <button className="button" onClick={() =>{dispatch(setToInitalState());dispatch(hideSelectedPokemon())} }> Return </button> 
+          <button className="button" onClick={() =>{dispatch(setToInitalState());dispatch(hideSelectedPokemon())}}> Return </button> 
         </div>
       </div>
       );
