@@ -63,7 +63,7 @@
   justify-content: center; 
   flex-direction: column;
   width: 70%;
-  height: 80%;
+  height: 95%;
   box-shadow: 0 4px 8px 0 rgba(15, 14, 14, 0.555);
   transition: 0.3s;
 }
@@ -118,4 +118,8 @@
   border-color: rgb(39, 39, 39);
   padding: 2px;
   border-radius: 20px;
+}
+
+.placeholder{
+  width: 100px;
 }

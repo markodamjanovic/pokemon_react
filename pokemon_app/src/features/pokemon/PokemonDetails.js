@@ -45,7 +45,7 @@ export function PokemonDetails(prop) {
 
     function renderPokemon(){
     return <div className="child">
-              <img src={imagePlaceholder()} alt="sprite"/>
+              <img className="placeholder" src={imagePlaceholder()} alt="sprite"/>
               <div><h2 className="h2">{pokemonDetails.name}</h2></div>  
               <div className="atributes">
                 <p className="p3">Abilities</p>
