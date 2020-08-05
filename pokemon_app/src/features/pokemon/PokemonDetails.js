@@ -38,7 +38,8 @@ export function PokemonDetails(prop) {
       if(pokemonDetails.sprites.front_default === null){
         return imgPlaceholder
       }
-      else{
+      else
+      {
         return pokemonDetails.sprites.front_default
       }
     }
