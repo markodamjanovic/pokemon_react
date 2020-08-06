@@ -5,6 +5,7 @@ export const SUCCESS = 'success'
 export const LOADING = 'loading'
 export const FAILED = 'failed'
 export const MAX_NUM_OF_RECORDS = 1000
+export const LIMIT = 40
 
 async function callAPI(url){
   let data

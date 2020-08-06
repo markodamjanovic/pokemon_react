@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
-import {allPokemons, fetchPokemons, showDetails, showSelectedPokemon, selectedPokemon} from './pokemonListSlice'
+import {allPokemons, fetchPokemons, fetchPokemonsByType, showDetails, showSelectedPokemon, selectedPokemon} from './pokemonListSlice'
 import { increment, decrement, selectPageNum} from '../../appSlice';
-import {API_URL, SUCCESS, LOADING, FAILED} from '../../utility/API';
+import {API_URL, API_URL_TYPE, LIMIT, SUCCESS, LOADING, FAILED} from '../../utility/API';
 import {LoadingSpinner} from '../../utility/loadingSpinner/loadingSpinner'
 import {PokemonDetails} from '../pokemon/PokemonDetails'
 import {FilterPokemons} from '../filterPokemons/FilterPokemons'
-import {filterName, filterType} from '../filterPokemons/FilterPokemonsSlice'
+import {filterType, filterName} from '../filterPokemons/FilterPokemonsSlice'
 
 
 import './pokemonList.css'
@@ -25,9 +25,17 @@ export function PokemonList() {
 
     useEffect(() => {
       if (pokemonDataStatus === 'idle'){
-        dispatch(fetchPokemons({url: API_URL, pageNumber:1}))
+        if (selectedType !== "All Types")
+        {
+          dispatch(fetchPokemonsByType(`${API_URL_TYPE}/${selectedType}`))
+        }
+        else
+        {
+          dispatch(fetchPokemons({url: API_URL, pageNumber:1}))
+        }
+        
       }
-    }, [pokemonDataStatus, dispatch])
+    }, [pokemonDataStatus, selectedType, dispatch])
     
 
     function renderElements(){
@@ -72,7 +80,7 @@ export function PokemonList() {
   
         {(showSinglePokemon ^ pokemonFilterName === "" ^ selectedType !== "All Types") === 1 && <div>
           <button className="button" disabled={pageNumber <= 1 } onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber - 1})); dispatch(decrement())} } > Previous </button>
-          <button className="button" disabled={pokemonData.length === 0} onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber + 1})); dispatch(increment())}} > Next </button>
+          <button className="button" disabled={pokemonData.length < LIMIT} onClick={() => {dispatch(fetchPokemons({url:API_URL, page: pageNumber + 1})); dispatch(increment())}} > Next </button>
         </div>}
       </div>
     );
