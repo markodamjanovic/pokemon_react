@@ -12,10 +12,13 @@ export const appSlice = createSlice({
         decrement: state => {
             state.value -= 1;
         },
+        setPageNumber : (state, action) =>{
+            state.value = action.payload
+        } 
     },
 });
 
-export const { increment, decrement} = appSlice.actions;
+export const { increment, decrement, setPageNumber} = appSlice.actions;
 
 export const selectPageNum = state => state.pageNumber.value;
 

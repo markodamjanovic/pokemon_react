@@ -5,6 +5,8 @@ import {API_URL, API_URL_TYPE, MAX_NUM_OF_RECORDS, SUCCESS} from '../../utility/
 import {LoadingSpinner} from '../../utility/loadingSpinner/loadingSpinner'
 import {fetchPokemonsByType} from '../pokemonList/pokemonListSlice'
 import {fetchPokemonTypes, filterType ,filterName, filterTypes, setName, filterStatus, setType} from './FilterPokemonsSlice'
+import { setPageNumber} from '../../appSlice';
+
 
 export function FilterPokemons(){
 
@@ -21,18 +23,22 @@ export function FilterPokemons(){
       }, [status, dispatch])
 
     function catchThemAll(){
+        dispatch(setType("All Types"))
+        dispatch(setPageNumber(1))
+        dispatch(setName(""))
+        dispatch(fetchPokemons({url:API_URL, page: 1, numberOfRecords: MAX_NUM_OF_RECORDS}))
+    }
+
+    function catchAPokemon(name){
+        dispatch(setType("All Types"))
+        dispatch(setPageNumber(1))
         dispatch(fetchPokemons({url:API_URL, page: 1, numberOfRecords: MAX_NUM_OF_RECORDS}))
     }
 
     function filterPokemonsByType(type){
         dispatch(setType(type))
-        if (type !== "All Types"){
-            dispatch(fetchPokemonsByType(`${API_URL_TYPE}/${type}`))
-        }
-        else
-        {
-            dispatch(fetchPokemons({url:API_URL, page: 1, numberOfRecords: MAX_NUM_OF_RECORDS}))
-        }
+        dispatch(setName(""))
+        dispatch(fetchPokemonsByType(`${API_URL_TYPE}/${type}`))
     }
 
     function renderElements(){
@@ -45,7 +51,7 @@ export function FilterPokemons(){
                     {pokemonTypes.map(type => ( <option key={type.name} value={type.name}>{type.name}</option>))}
                 </select>
                 <input autocomplete="off" className="text-input" onChange={e => dispatch(setName(e.target.value))} value={searchName} type="text" placeholder="Search by name.." name="search"/>
-                <button className="searchbutton" onClick={() => catchThemAll()}> Search </button>
+                <button className="searchbutton" onClick={() => catchAPokemon()}> Search </button>
                 <button className="catchallbutton" onClick={() => catchThemAll()}> Catch Them All! </button>
             </div>
         </div>)}
