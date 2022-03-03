@@ -1,0 +1,27 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "useBuiltIns": "usage",
+                "corejs": {
+                    "version": "3.10",
+                    "proposals": true
+                },
+                "modules": "auto"
+            }
+        ],
+        "@babel/react",
+        "@babel/typescript"
+    ],
+    "plugins": [
+        [
+            "@babel/transform-runtime",
+            {
+                "corejs": 3,
+                "regenerator": true
+            }
+        ],
+        "@babel/proposal-class-properties"
+    ]
+  }

@@ -1,0 +1,48 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "start-webpack",
+            "type": "npm",
+            "script": "watch",
+            "path": "client/",
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "isBackground": true,
+            "problemMatcher": {
+                // da ovaj matcher ne bi detektirao greške i nakon što su ispravljene
+                // dodatno je instaliran `clean-terminal-webpack-plugin`,
+                // koji očisti konzolu prije svakog rebuild-a
+                "pattern": {
+                    "regexp": "^((Aggregate|Eval|Internal|Range|Reference|Syntax|Type|URI)Error): ([^:]+): [^(]+ \\((\\d+):(\\d+)\\)",
+                    "message": 1,
+                    "file": 3,
+                    "line": 4,
+                    "column": 5,
+                },
+                "fileLocation": "absolute",
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^Entrypoint main.+",
+                    "endsPattern": "^webpack [0-9.]+ compiled .+"
+                }
+            }
+        }
+    ],
+    "inputs": [
+        {
+          "id": "terminate",
+          "type": "command",
+          "command": "workbench.action.tasks.terminate",
+          "args": "terminateAll"
+        }
+    ]
+}

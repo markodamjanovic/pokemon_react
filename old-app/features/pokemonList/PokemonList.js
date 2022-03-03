@@ -8,9 +8,6 @@ import {PokemonDetails} from '../pokemon/PokemonDetails'
 import {FilterPokemons} from '../filterPokemons/FilterPokemons'
 import {filterType, filterName} from '../filterPokemons/FilterPokemonsSlice'
 
-
-import './pokemonList.css'
-
 export function PokemonList() {
     
     const dispatch = useDispatch()
