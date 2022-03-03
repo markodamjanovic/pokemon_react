@@ -35,7 +35,13 @@
                     "endsPattern": "^webpack [0-9.]+ compiled .+"
                 }
             }
-        }
+        },
+        {
+            "label": "terminate-all-tasks",
+            "command": "echo ${input:terminate}",
+            "type": "shell",
+            "problemMatcher": []
+        },
     ],
     "inputs": [
         {

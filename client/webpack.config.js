@@ -6,9 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
 
-  const DEST_DIR = '../server';
-
-  const devMode = argv.mode !== 'production';
+  const DEST_DIR = '../server/src';
 
   const config = {
     entry: './src/index.tsx',
@@ -16,6 +14,7 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, `${DEST_DIR}/public`),
       filename: 'script/[name].js'
     },
+    devtool: "source-map",
     module: {
       rules: [
         {

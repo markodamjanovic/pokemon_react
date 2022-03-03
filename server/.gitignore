@@ -1,4 +1,5 @@
 node_modules/
-public/
-# slijedeću datoteku generira webpack
-views/partials/html-head--scripts.ejs
+build/
+src/public/
+
+src/views/partials/html-head--scripts.ejs

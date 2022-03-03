@@ -1,0 +1,9 @@
+{
+    "verbose": true,
+    "debug": false,
+    "exec": "node --inspect=0.0.0.0:9228 -r ts-node/register ./src/entry.ts",
+    "ignore": [ "src/public/script/*", "src/public/style/*", "src/views/partials/html-head--scripts.ejs" ],
+    "watch": ["./src"],
+    "ext": "ts",
+    "inspect": true
+}
