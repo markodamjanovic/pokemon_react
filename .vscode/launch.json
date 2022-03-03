@@ -1,7 +1,4 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
@@ -9,8 +6,8 @@
             "name": "RUN",
             "request": "launch",
             "runtimeArgs": [
-                "run", // ovo je `run` iz `npm run`
-                "watch" // ovo je `watch` iz `npm run watch`
+                "run", 
+                "debug" 
             ],
             "runtimeExecutable": "npm",
             "cwd": "${workspaceFolder}/server",
@@ -19,10 +16,9 @@
                 "<node_internals>/**",
                 ".<node_internals>/**",
             ],
-            // "console": "integratedTerminal", // defaultni "Debug Console" ne prikazuje stvari koje ispiše `morgan` ili `debug` NPM lib
-            "outputCapture": "std", // ovo će natjerati debug console da prikazuje i koje ispišu `morgan` ili `debug`, ali bez da poštuje boje
-            "preLaunchTask": "start-webpack", // pokreće webpack u watch načinu rada
-            "postDebugTask": "terminate-all-tasks", // zaustavljam webpack task
+            "outputCapture": "std", 
+            "preLaunchTask": "start-webpack",
+            "postDebugTask": "terminate-all-tasks",
             "presentation": {
                 "hidden": false,
                 "group": "Debug",
