@@ -6,7 +6,6 @@ export const fetchPokemonTypes = createAsyncThunk('pokemonList/fetchPokemonTypes
     return response
 })
 
-
 export const filterPokemonsSlice = createSlice({
     name: 'filters',
     initialState:{
