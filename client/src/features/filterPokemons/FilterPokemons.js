@@ -7,7 +7,6 @@ import {fetchPokemonsByType} from '../pokemonList/pokemonListSlice'
 import {fetchPokemonTypes, filterType ,filterName, filterTypes, setName, filterStatus, setType} from './FilterPokemonsSlice'
 import { setPageNumber} from '../../appSlice';
 
-
 export function FilterPokemons(){
 
     const searchName = useSelector(filterName)
