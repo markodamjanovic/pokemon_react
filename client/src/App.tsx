@@ -1,5 +1,6 @@
 import React from 'react';
 import Filter from './components/Filter';
+import List from './components/List';
 
 const App = () => <div className='app-layout'>
     <div className='logo-row'> 
@@ -10,7 +11,7 @@ const App = () => <div className='app-layout'>
         </div>
     <div className='list-row'> 
         <div className='list-row__list-cell'> 
-            This will be populated with pokemons! 
+            <List/>
         </div>
     </div>
 </div>
