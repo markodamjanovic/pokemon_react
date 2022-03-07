@@ -1,6 +1,79 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+.app-layout{
+  @include make-container();
+}
+
+.logo-row{
+  @include make-row(); 
+  align-items: center;
+  justify-content: center;
+
+  &__logo-column{
+    @include make-col-auto();
+
+    background: url("img/pokemon_logo.png");
+    background-repeat: no-repeat;
+    background-size: 400px 200px;
+    width: 400px;
+    height: 200px;
+  }
+}
+
+.filter-row{
+  @include make-row();
+  align-items: center;
+  justify-content: center;
+
+  &__filter-column{
+    @include make-col(10);
+  }
+}
+
+.filter{
+  @include make-row();
+  align-items: center;
+  justify-content: center;
+
+  &__select-col{
+    @include make-col(2);
+    
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+
+    &__select{
+      @extend .form-select;
+    }
+  }
+
+  &__search-col{
+    @include make-col-auto();
+
+    &__input{
+      color: aqua;
+    }
+  }
+
+  &__btn-col{
+    @include make-col(2);
+
+    &__btn{
+      @extend .btn;
+    }
+  }
+}
+
+.list-row{
+  @include make-row();
+  align-items: center;
+  justify-content: center;
+
+  &__list-cell{
+    @include make-col(11);
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto';
