@@ -23,13 +23,20 @@ module.exports = (env, argv) => {
           exclude: /node_modules/
         },
         {
-          test: /\.scss$/,
-          use: [
-            { loader: MiniCssExtractPlugin.loader },
-            { loader: 'css-loader' },
-            {
-              loader: 'postcss-loader',
-              options:{ postcssOptions: {
+          test: /\.(scss)$/,
+          use: [{
+            // inject CSS to page
+            loader: 'style-loader'
+          }, {
+            // translates CSS into CommonJS modules
+            loader: 'css-loader'
+          }, {
+            // Run postcss actions
+            loader: 'postcss-loader',
+            options: {
+              // `postcssOptions` is needed for postcss 8.x;
+              // if you use postcss 7.x skip the key
+              postcssOptions: {
                 // postcss plugins, can be exported to postcss.config.js
                 plugins: function () {
                   return [
@@ -37,9 +44,11 @@ module.exports = (env, argv) => {
                   ];
                 }
               }
-            }},
-            { loader: 'sass-loader' }
-          ]
+            }
+          }, {
+            // compiles Sass to CSS
+            loader: 'sass-loader'
+          }]
         },
         {
           test: /\.(gif|mp3|svg)$/,
@@ -61,6 +70,18 @@ module.exports = (env, argv) => {
               outputPath: '/',
               publicPath: '/',
             }
+          }
+        },
+        {
+          test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          include: path.resolve(__dirname, './node_modules/bootstrap-icons/font/fonts'),
+          use: {
+              loader: 'file-loader',
+              options: {
+                  name: '[name].[ext]',
+                  outputPath: 'assets/bootstrap-icons',
+                  publicPath: '../assets/bootstrap-icons',
+              },
           }
         }
       ]
