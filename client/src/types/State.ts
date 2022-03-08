@@ -1,5 +1,9 @@
+import { PokemonModel } from '@backend/types/Models';
+
 interface State {
-    list : []
+    pokemonList : PokemonModel[],
+    next: string,
+    previous: string,
 }
 
 export default State;

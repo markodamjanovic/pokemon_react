@@ -1,24 +1,26 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import State from '../types/State';
 
 const initialState: State = {
-    list: []
+    next: '',
+    previous: '',
+    pokemonList: []
 }
 
+export const getAllPokemons = createAsyncThunk('listSlice/getAllPokemons', async () => fetch('/pokemon/').then(response => response.json()));
 
 export const listSlice = createSlice({
     name: 'pokemonList',
     initialState,
-    reducers: {
-        setList(state: State, action: PayloadAction<[]>) {
-            state.list = action.payload;
-        }
+    reducers: {},
+    extraReducers: builder => {
+        builder.addCase(getAllPokemons.fulfilled, (state, action) => {
+            state.pokemonList = action.payload;
+        });
     }
 })
 
-export const { setList } = listSlice.actions;
-
-export const list = (state: State) => state.list
+export const list = (state: State) => state.pokemonList;
 
 export default listSlice.reducer;
 
