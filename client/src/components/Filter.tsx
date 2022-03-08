@@ -1,6 +1,5 @@
 import React, {useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setList } from '../app/listSlice';
 
 const Filter = () => {
     const dispatch = useDispatch();
@@ -17,7 +16,7 @@ const Filter = () => {
             <input className='filter__search-col__input' type="text"/>
         </div>
         <div className='filter__btn-col'>
-            <button className='filter__btn-col__btn' onClick={() => dispatch(setList([]))}> Catch them! </button>
+            <button className='filter__btn-col__btn'> Catch them! </button>
         </div>
     </div>
 };
