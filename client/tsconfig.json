@@ -2,6 +2,7 @@
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
         "outDir": "./dist/",
+        "paths": { "@backend/*": ["../server/src/*"], },
         "sourceMap": true,
         "strict": true,
         "noImplicitReturns": true,
@@ -10,7 +11,7 @@
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,
-        "jsx": "react",
+        "jsx": "react"
     },
     "include": [
         "./src/**/*"
