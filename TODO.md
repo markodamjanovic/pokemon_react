@@ -10,3 +10,6 @@
 10. dark mode
 11. language
 12. evolution chain inside pokemon details
+13. lazy loading of pokemons
+14. custom error 404, 500 page (Express side)
+15. ip language localization
