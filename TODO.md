@@ -7,3 +7,6 @@
 7. drag and drop feature. 
 8. sprites in a carousel or interactable
 9. skeleton for pokemon list and pokemon details
+10. dark mode
+11. language
+12. evolution chain inside pokemon details
